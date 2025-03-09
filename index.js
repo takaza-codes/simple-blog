@@ -61,5 +61,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-localStorage.removeItem('entries');
+// localStorage.removeItem('entries');
 // console.log(JSON.parse(localStorage.getItem('entries')));
