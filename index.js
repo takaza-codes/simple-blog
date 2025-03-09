@@ -1,37 +1,57 @@
 const entryTitle = document.getElementById('entry-title');
 const entryBody = document.getElementById('entry-body');
 const submitButton = document.getElementById('submit-button');
-const postedEntries = document.getElementById('entries');
+const postedEntries = document.querySelector('.entries');
 const errorMsg = document.getElementById('error-msg');
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
 
     loadEntries();
 
     submitButton.addEventListener('click', () => {
-        if (!entryTitle.value.trim() === '' && !entryBody.value.trim() === '') {
             const entryPost = {title: entryTitle.value.trim(), body: entryBody.value.trim()};
-            // submitButton.removeAttribute(disabled);
+            if (entryPost.title === '' || entryPost.body === '') {
+                errorMsg.textContent = 'Both fields are required!';
+                return;
+            } else {
+                errorMsg.textContent = '';
+            }
             addEntry(entryPost);
             entryTitle.value = '';
             entryBody.value = '';
-        } else {
-            errorMsg.textContent = 'Parts of your entry are missing!'
-        }
     });
 
     function addEntry(entry) {
-        const entries = JSON.parse(localStorage.getItem('entries')) || [];
-        entries.push(entry);
-        localStorage.setItem('entries', JSON.stringify(entries));
-        displayEntry();
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: JSON.stringify(entry),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to save entry');
+            }
+            return response.json();
+        })
+        .then(savedEntry => {
+            const entries = JSON.parse(localStorage.getItem('entries')) || [];
+            entries.push(savedEntry);
+            localStorage.setItem('entries', JSON.stringify(entries));
+            displayEntry(savedEntry);
+        })
+        .catch((error) => {
+            errorMsg.textContent = `Failed to save entry: ${error}`;
+        });
     }
-
+    
     function displayEntry(entry) {
         const entryContainer = document.createElement('div');
-        entryContainer.innerHTML = `<h2>${entry.title}</h2>
+        entryContainer.classList.add('new-entry');
+        entryContainer.innerHTML = `<h3>${entry.title}</h3>
         <p>${entry.body}</p>`
-        postedEntries.appendChild(entryContainer);
+        postedEntries.prepend(entryContainer);
     }
 
     function loadEntries() {
@@ -40,3 +60,6 @@ document.addEventListener("DOMContentLoaded", function(){
         displayEntry(entry));
     }
 });
+
+localStorage.removeItem('entries');
+// console.log(JSON.parse(localStorage.getItem('entries')));
