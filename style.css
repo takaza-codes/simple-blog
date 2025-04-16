@@ -1,83 +1,85 @@
 body {
-    margin: 0 auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 18px;
-    background-color: rgba(242, 252, 214, 0.235);
+  margin: 0 auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  background-color: rgba(242, 252, 214, 0.235);
 }
 
 main {
-    margin: 0 auto;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 section {
-    width: 30%;
-    margin: 1rem auto;
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 0.5rem;
+  width: 30%;
+  margin: 1rem auto;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
 }
 
-h1, h2, h3 {
-    margin-top: 0;
-    font-family: "Combo", system-ui;
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  font-family: "Combo", system-ui;
 }
 
 h1 {
-    padding-right: 11rem;
-    font-size: 5rem;
+  padding-right: 11rem;
+  font-size: 5rem;
 }
 
 h3 {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .banner {
-    min-height: 17rem;
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-image: url(/pexels-sohi-807598.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: rgb(255, 237, 215);
+  min-height: 17rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-image: url(/banner-leaves.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(255, 237, 215);
 }
 
 .new-entry {
-    padding: 1rem;
-    border-radius: 8px;
-    border: 2px solid rgb(157, 186, 195);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid rgb(157, 186, 195);
 }
 
 #error-msg {
-    color: rgb(169, 18, 18);
-    font-weight: bold;
+  color: rgb(169, 18, 18);
+  font-weight: bold;
 }
 
 input {
-    min-height: 2rem;
+  min-height: 2rem;
 }
 
 #entry-body {
-    min-height: 4rem;
+  min-height: 4rem;
 }
 
 button {
-    min-width: 9rem;
-    max-width: 15rem;
-    height: 3rem;
-    align-self: flex-end;
-    font-size: 1.2rem;
-    color: rgb(61, 61, 61);
-    background-color:rgb(157, 195, 189);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+  min-width: 9rem;
+  max-width: 15rem;
+  height: 3rem;
+  align-self: flex-end;
+  font-size: 1.2rem;
+  color: rgb(61, 61, 61);
+  background-color: rgb(157, 195, 189);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 
-    &:hover {
-        background-color: pink;
-    }
+  &:hover {
+    background-color: pink;
+  }
 }
